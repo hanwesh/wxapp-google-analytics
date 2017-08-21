@@ -329,15 +329,12 @@ HitBuilder.prototype.addProduct = function (product) {
 
 // @param Products
 HitBuilder.prototype.addProducts = function (products) {
-	var prdIndex = 1;
-	for(var product in products)
+	var arrayLength = products.length;
+	for(var i=0; i<arrayLength; i++)
 	{
-		for (var k in product.hit) {
-			// pr<prdIndex>XX
-			this.set("pr" + prdIndex + k, product.hit[k]);
+		for (var k in products[i].hit) {
+			this.set("pr" + (i+1) + k,  products[i].hit[k]);
 		}
-		
-		prdIndex++;
 	}
 		
     return this;
