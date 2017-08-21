@@ -326,6 +326,23 @@ HitBuilder.prototype.addProduct = function (product) {
     this.next_product_index++;
     return this;
 }
+
+// @param Products
+HitBuilder.prototype.addProducts = function (products) {
+	var prdIndex = 1;
+	for(var product in products)
+	{
+		for (var k in product.hit) {
+			// pr<prdIndex>XX
+			this.set("pr" + prdIndex + k, product.hit[k]);
+		}
+		
+		prdIndex++;
+	}
+		
+    return this;
+}
+
 // @param Promotion
 HitBuilder.prototype.addPromotion = function (promotion) {
     var promIndex = this.next_promotion_index;
